@@ -1,14 +1,14 @@
-Cresco-Agent-RESTChannel-Plugin
-==============================
+Cresco-Agent-IRNC-Plugin
+========================
 
 ### Status
-[![Build Status](http://128.163.188.129:9998/buildStatus/icon?job=Cresco-Agent-RESTChannel-Plugin)](http://128.163.188.129:9998/job/Cresco-Agent-RESTChannel-Plugin/)
+[![Build Status](http://128.163.188.129:9998/buildStatus/icon?job=Cresco-Agent-IRNC-Plugin)](http://128.163.188.129:9998/job/Cresco-Agent-IRNC-Plugin/)
 
 --- 
 ### Install
 
 1. Download/update/confirm avalability of the [Cresco-Agent](http://128.163.188.129:9998/job/Cresco-Agent/lastSuccessfulBuild/com.researchworx.cresco$cresco-agent/) 
-2. Download the [Latest Build](http://128.163.188.129:9998/job/Cresco-Agent-RESTChannel-Plugin/lastStableBuild/com.researchworx.cresco$cresco-agent-restchannel-plugin/) of the Cresco-Agent-Controller and place it in the _plugin_ subdirectory of the agent directory.
+2. Download the [Latest Build](http://128.163.188.129:9998/job/Cresco-Agent-IRNC-Plugin/lastStableBuild/com.researchworx.cresco$cresco-agent-irnc-plugin/) of the Cresco-Agent-IRNC-Plugin and place it in the _plugin_ subdirectory of the agent directory.
 3. Modify _Cresco-Agent-Plugins.ini_ to configure your plug-in.
 4. Either restart the agent to load the plug-in or enable the agent through the controller.
 
@@ -31,3 +31,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 ###Project lead
 
 Cody Bumgardner (@codybum)
+
+### Developer
+
+Caylin Hickey
