@@ -17,7 +17,6 @@ import shared.MsgEvent;
 import shared.MsgEventType;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 @Path("/API")
 public class webREST {
