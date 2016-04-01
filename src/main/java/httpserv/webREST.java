@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 
 @Path("/API")
 public class webREST {
+    /* Logger */
     private static final Logger logger = LoggerFactory.getLogger(webREST.class);
 
     @GET
