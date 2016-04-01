@@ -48,7 +48,6 @@ public class webREST {
                 }
                 me = new MsgEvent(MsgEventType.valueOf(type.toUpperCase()), region, agent, plugin, params);
                 if ((region != null) && (agent != null) && (plugin != null)) {
-                    //plugin message
                     me.setSrc(PluginEngine.region, PluginEngine.agent, PluginEngine.plugin);
                     me.setDst(region, agent, plugin);
                 } else if ((region != null) && (agent != null)) {
