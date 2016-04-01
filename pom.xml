@@ -2,13 +2,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.researchworx.cresco</groupId>
-  <artifactId>cresco-agent-irnc-plugin</artifactId>
+  <artifactId>cresco-agent-irnc-restful-plugin</artifactId>
   <version>0.5.0-SNAPSHOT</version>
-  <name>Cresco Agent IRNC Plugin</name>
-  <description>RESTChannel Plugin for the Cresco Agent</description>
-  <url>https://github.com/researchworx/Cresco-Agent-IRNC-Plugin</url>
+  <name>Cresco Agent IRNC RESTful Plugin</name>
+  <description>IRNC RESTful Plugin for the Cresco Agent</description>
+  <url>https://github.com/researchworx/Cresco-Agent-IRNC-RESTful-Plugin</url>
   <scm>
-    <connection>scm:git:git://github.com/researchworx/Cresco-Agent-IRNC-Plugin.git</connection>
+    <connection>scm:git:git://github.com/researchworx/Cresco-Agent-IRNC-RESTful-Plugin.git</connection>
   </scm>
 
   <dependencies>
