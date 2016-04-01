@@ -1,8 +1,9 @@
 #!groovy
 
 node {
-    stage 'Build and Test'
-    env.PATH = "${tool 'Maven 3'}/bin:${env.PATH}"
-    git url: 'https://github.com/ResearchWorx/Cresco-Agent-IRNC-RESTful-Plugin.git'
-    sh "mvn clean package"
+    stage 'Checkout'
+    checkout scm
+    def mvnHome = tool 'M3'
+    stage 'Build'
+    sh "${mvnHome}/bin/mvn clean package"
 }
