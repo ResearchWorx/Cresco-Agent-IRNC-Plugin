@@ -1,6 +1,15 @@
 package plugincore;
 
+import channels.plugins.RPCCall;
 import httpserv.httpServerEngine;
+import httpserv.webREST;
+import org.apache.commons.configuration.SubnodeConfiguration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import shared.Clogger;
+import shared.MsgEvent;
+import shared.MsgEventType;
+import shared.PluginImplementation;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,16 +19,6 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.jar.Attributes;
 import java.util.jar.JarInputStream;
 import java.util.jar.Manifest;
-
-import org.apache.commons.configuration.SubnodeConfiguration;
-
-import channels.RPCCall;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import shared.Clogger;
-import shared.MsgEvent;
-import shared.MsgEventType;
-import shared.PluginImplementation;
 
 public class PluginEngine {
     private static final Logger logger = LoggerFactory.getLogger(PluginEngine.class);
@@ -43,14 +42,18 @@ public class PluginEngine {
     public static ConcurrentLinkedQueue<MsgEvent> msgInQueue;
 
     public PluginEngine() {
-        pluginName = "cresco-agent-irnc-plugin";
+        pluginName = "cresco-agent-irnc-restful-plugin";
     }
 
     public static void shutdown() {
         logger.info("Plugin Shutdown : Agent=" + agent + "pluginname=" + plugin);
         RESTfulActive = false;
+        for (webREST.QueueListener listener : webREST.listeners.values()) {
+            listener.close();
+        }
         wd.timer.cancel(); //prevent rediscovery
         try {
+            Thread.sleep(2000);
             MsgEvent me = new MsgEvent(MsgEventType.CONFIG, region, null, null, "disabled");
             me.setParam("src_region", region);
             me.setParam("src_agent", agent);
@@ -95,7 +98,8 @@ public class PluginEngine {
     }
 
     //steps to init the plugin
-    public boolean initialize(ConcurrentLinkedQueue<MsgEvent> outQueue, ConcurrentLinkedQueue<MsgEvent> inQueue, SubnodeConfiguration configObj, String newRegion, String newAgent, String newPlugin) {
+    public boolean initialize(ConcurrentLinkedQueue<MsgEvent> outQueue, ConcurrentLinkedQueue<MsgEvent> inQueue,
+                              SubnodeConfiguration configObj, String newRegion, String newAgent, String newPlugin) {
         logger.trace("Call to initialize");
         logger.trace("Building rpcMap");
         rpcMap = new ConcurrentHashMap<>();
@@ -173,13 +177,14 @@ public class PluginEngine {
                         }
 
                     } catch (Exception ex) {
-                        System.out.println("Controller : PluginEngine : msgIn Thread: " + ex.toString());
+                        System.out.println("IRNC Plugin : PluginEngine : msgIn Run Thread: " + ex.toString());
+                        ex.printStackTrace();
                     }
                 }
             };
             thread.start();
         } catch (Exception ex) {
-            System.out.println("Controller : PluginEngine : msgIn Thread: " + ex.toString());
+            System.out.println("IRNC Plugin : PluginEngine : msgIn : " + ex.toString());
         }
     }
 }

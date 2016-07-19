@@ -44,6 +44,12 @@
       <artifactId>logback-classic</artifactId>
       <version>1.1.3</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.rabbitmq</groupId>
+      <artifactId>amqp-client</artifactId>
+      <version>3.5.0</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -76,6 +82,7 @@
               <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
             </manifest>
             <manifestEntries>
+              <artifactId>cresco-agent-irnc-restful-plugin</artifactId>
               <Implementation-Version>${project.version}.${buildNumber}.${maven.build.timestamp}</Implementation-Version>
             </manifestEntries>
           </archive>

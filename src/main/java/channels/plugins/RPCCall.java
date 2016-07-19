@@ -1,4 +1,4 @@
-package channels;
+package channels.plugins;
 
 import plugincore.PluginEngine;
 import shared.MsgEvent;
